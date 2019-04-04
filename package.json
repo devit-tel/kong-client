@@ -2,9 +2,11 @@
   "name": "kong-client",
   "version": "0.0.1",
   "description": "Utility function for kong api ",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
-    "test": "babel-node src/test-kong.js"
+    "clean": "rm -rf build && mkdir build",
+    "test": "babel-node src/test-kong.js",
+    "build": "npm run clean && babel -d ./build ./src -s"
   },
   "keywords": [
     "kong",
