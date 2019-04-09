@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAccessToken = exports.createOauthCredential = exports.deleteConsumer = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
+exports.refreshAccessToken = exports.getAccessToken = exports.createOauthCredential = exports.deleteConsumer = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -103,4 +103,22 @@ var getAccessToken = function getAccessToken(baseURL, params, provisionKey) {
 };
 
 exports.getAccessToken = getAccessToken;
+
+var refreshAccessToken = function refreshAccessToken(baseURL, params) {
+  return (0, _axios["default"])({
+    method: 'post',
+    baseURL: baseURL,
+    url: '/user/oauth2/token',
+    auth: {
+      username: params.clientId,
+      password: params.clientSecret
+    },
+    data: {
+      grant_type: 'refresh_token',
+      refresh_token: params.refreshToken
+    }
+  });
+};
+
+exports.refreshAccessToken = refreshAccessToken;
 //# sourceMappingURL=connector.js.map

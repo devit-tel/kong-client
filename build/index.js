@@ -44,6 +44,9 @@ var KongClient = function KongClient(options) {
   (0, _defineProperty2["default"])(this, "getAccessToken", function (params) {
     return (0, _connector.getAccessToken)(_this.options.baseURL, params, _this.options.provisionKey);
   });
+  (0, _defineProperty2["default"])(this, "refreshAccessToken", function (params) {
+    return (0, _connector.refreshAccessToken)(_this.options.baseURL, params);
+  });
   this.options = (0, _objectSpread2["default"])({}, DEFAULT_OPTIONS, options);
   this.tasks = {};
 };

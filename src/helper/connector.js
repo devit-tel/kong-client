@@ -76,3 +76,18 @@ export const getAccessToken = (baseURL, params, provisionKey) => {
     data
   })
 }
+
+export const refreshAccessToken = (baseURL, params) =>
+  HTTPClient({
+    method: 'post',
+    baseURL,
+    url: '/user/oauth2/token',
+    auth: {
+      username: params.clientId,
+      password: params.clientSecret
+    },
+    data: {
+      grant_type: 'refresh_token',
+      refresh_token: params.refreshToken
+    }
+  })

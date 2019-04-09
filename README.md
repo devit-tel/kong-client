@@ -64,3 +64,15 @@ kongClient
   })
   .then(res => console.log(res.data))
 ```
+
+### Refresh access token
+
+```javascript
+kongClient
+  .refreshAccessToken({
+    refreshToken: 'refresh_token',
+    clientId: 'clientId',
+    clientSecret: 'clientSecret'
+  })
+  .then(res => console.log(res))
+```
