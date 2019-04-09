@@ -23,11 +23,9 @@ const kongClient = new KongClient({
 
 kongClient
   .getAccessToken({
-    grantType: 'password',
+    grantType: 'client_credentials',
     scope: ['USER_ACCESS', 'TMS_ACCESS'],
     authenticatedUserId: 'test-kong-client',
-    username: 'hello',
-    password: 'hello',
     clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
     clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
   })
