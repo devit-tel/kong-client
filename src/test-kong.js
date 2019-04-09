@@ -9,8 +9,14 @@ const kongClient = new KongClient({
 // kongClient
 //   .retrieveConsumer('gun')
 //   .then(res => console.log(res.data))
+// const test = async () => {
+//   const res = await kongClient.createConsumer('test-kong')
+//   console.log(res)
+// }
 
-// kongClient.createConsumer('test-kong-client').then(res => console.log(res))
+// test()
+
+kongClient.deleteConsumer('gun').then(res => console.log(res))
 
 // kongClient
 //   .createOauthCredential(
@@ -21,12 +27,12 @@ const kongClient = new KongClient({
 //   .catch(err => console.log(err))
 //   .then(res => console.log(res))
 
-kongClient
-  .getAccessToken({
-    grantType: 'client_credentials',
-    scope: ['USER_ACCESS', 'TMS_ACCESS'],
-    authenticatedUserId: 'test-kong-client',
-    clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
-    clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
-  })
-  .then(res => console.log(res.data))
+// kongClient
+//   .getAccessToken({
+//     grantType: 'client_credentials',
+//     scope: ['USER_ACCESS', 'TMS_ACCESS'],
+//     authenticatedUserId: 'test-kong-client',
+//     clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
+//     clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
+//   })
+//   .then(res => console.log(res.data))

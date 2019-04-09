@@ -25,6 +25,13 @@ export const createConsumer = (adminURL, consumerId) =>
     }
   })
 
+export const deleteConsumer = (adminURL, consumerId) =>
+  HTTPClient({
+    method: 'delete',
+    baseURL: adminURL,
+    url: `/consumers/${consumerId}`
+  })
+
 export const createOauthCredential = (
   adminURL,
   consumerId,
@@ -61,7 +68,7 @@ export const getAccessToken = (baseURL, params, provisionKey) => {
   return HTTPClient({
     method: 'post',
     baseURL,
-    url:'/user/oauth2/token',
+    url: '/user/oauth2/token',
     auth: {
       username: params.clientId,
       password: params.clientSecret

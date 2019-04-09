@@ -2,8 +2,9 @@ import {
   getKongInfomation,
   retrieveConsumer,
   createConsumer,
+  deleteConsumer,
   createOauthCredential,
-  getAccessToken
+  getAccessToken,
 } from './helper/connector'
 
 export const DEFAULT_OPTIONS = {
@@ -25,6 +26,9 @@ export default class KongClient {
 
   createConsumer = consumerId =>
     createConsumer(this.options.adminURL, consumerId)
+  
+  deleteConsumer = consumerId => 
+    deleteConsumer(this.options.adminURL, consumerId)
 
   createOauthCredential = (consumerId, name, redirectUris) =>
     createOauthCredential(this.options.adminURL, consumerId, name, redirectUris)

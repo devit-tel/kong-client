@@ -11,8 +11,15 @@ var kongClient = new _index["default"]({
 }); // kongClient
 //   .retrieveConsumer('gun')
 //   .then(res => console.log(res.data))
-// kongClient.createConsumer('test-kong-client').then(res => console.log(res))
-// kongClient
+// const test = async () => {
+//   const res = await kongClient.createConsumer('test-kong')
+//   console.log(res)
+// }
+// test()
+
+kongClient.deleteConsumer('gun').then(function (res) {
+  return console.log(res);
+}); // kongClient
 //   .createOauthCredential(
 //     'test-kong-client',
 //     'test-oauth-credential',
@@ -20,14 +27,13 @@ var kongClient = new _index["default"]({
 //   )
 //   .catch(err => console.log(err))
 //   .then(res => console.log(res))
-
-kongClient.getAccessToken({
-  grantType: 'client_credentials',
-  scope: ['USER_ACCESS', 'TMS_ACCESS'],
-  authenticatedUserId: 'test-kong-client',
-  clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
-  clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
-}).then(function (res) {
-  return console.log(res.data);
-});
+// kongClient
+//   .getAccessToken({
+//     grantType: 'client_credentials',
+//     scope: ['USER_ACCESS', 'TMS_ACCESS'],
+//     authenticatedUserId: 'test-kong-client',
+//     clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
+//     clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
+//   })
+//   .then(res => console.log(res.data))
 //# sourceMappingURL=test-kong.js.map

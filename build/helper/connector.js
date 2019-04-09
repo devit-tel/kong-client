@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAccessToken = exports.createOauthCredential = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
+exports.getAccessToken = exports.createOauthCredential = exports.deleteConsumer = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -42,6 +42,16 @@ var createConsumer = function createConsumer(adminURL, consumerId) {
 };
 
 exports.createConsumer = createConsumer;
+
+var deleteConsumer = function deleteConsumer(adminURL, consumerId) {
+  return (0, _axios["default"])({
+    method: 'delete',
+    baseURL: adminURL,
+    url: "/consumers/".concat(consumerId)
+  });
+};
+
+exports.deleteConsumer = deleteConsumer;
 
 var createOauthCredential = function createOauthCredential(adminURL, consumerId, name, redirect_uris) {
   return (0, _axios["default"])({

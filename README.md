@@ -32,6 +32,12 @@ kongClient.retrieveConsumer('gun').then(res => console.log(res.data))
 kongClient.createConsumer('test-kong-client').then(res => console.log(res))
 ```
 
+### Delete Consumer
+
+```javascript
+kongClient.deleteConsumer('test-kong-client').then(res => console.log(res))
+```
+
 ## Credentials
 
 ### Create Oauth Credentials

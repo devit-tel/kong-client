@@ -35,6 +35,9 @@ var KongClient = function KongClient(options) {
   (0, _defineProperty2["default"])(this, "createConsumer", function (consumerId) {
     return (0, _connector.createConsumer)(_this.options.adminURL, consumerId);
   });
+  (0, _defineProperty2["default"])(this, "deleteConsumer", function (consumerId) {
+    return (0, _connector.deleteConsumer)(_this.options.adminURL, consumerId);
+  });
   (0, _defineProperty2["default"])(this, "createOauthCredential", function (consumerId, name, redirectUris) {
     return (0, _connector.createOauthCredential)(_this.options.adminURL, consumerId, name, redirectUris);
   });
