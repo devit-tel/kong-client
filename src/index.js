@@ -2,11 +2,14 @@ import {
   getKongInfomation,
   retrieveConsumer,
   createConsumer,
-  createOauthCredential
+  createOauthCredential,
+  getAccessToken
 } from './helper/connector'
 
 export const DEFAULT_OPTIONS = {
-  baseURL: 'http://localhost:8001'
+  adminURL: 'http://localhost:8001',
+  baseURL: 'http://localhost:8000',
+  provisionKey: 'some-key'
 }
 
 export default class KongClient {
@@ -15,14 +18,17 @@ export default class KongClient {
     this.tasks = {}
   }
 
-  getKongInfomation = () => getKongInfomation(this.options.baseURL)
+  getKongInfomation = () => getKongInfomation(this.options.adminURL)
 
   retrieveConsumer = consumerId =>
-    retrieveConsumer(this.options.baseURL, consumerId)
+    retrieveConsumer(this.options.adminURL, consumerId)
 
   createConsumer = consumerId =>
-    createConsumer(this.options.baseURL, consumerId)
+    createConsumer(this.options.adminURL, consumerId)
 
   createOauthCredential = (consumerId, name, redirectUris) =>
-    createOauthCredential(this.options.baseURL, consumerId, name, redirectUris)
+    createOauthCredential(this.options.adminURL, consumerId, name, redirectUris)
+
+  getAccessToken = params =>
+    getAccessToken(this.options.baseURL, params, this.options.provisionKey)
 }

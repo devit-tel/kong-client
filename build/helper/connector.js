@@ -5,35 +5,35 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createOauthCredential = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
+exports.getAccessToken = exports.createOauthCredential = exports.createConsumer = exports.retrieveConsumer = exports.getKongInfomation = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
 _axios["default"].defaults.headers['Content-Type'] = 'application/json';
 
-var getKongInfomation = function getKongInfomation(baseURL) {
+var getKongInfomation = function getKongInfomation(adminURL) {
   return (0, _axios["default"])({
     method: 'get',
-    baseURL: baseURL
+    baseURL: adminURL
   });
 };
 
 exports.getKongInfomation = getKongInfomation;
 
-var retrieveConsumer = function retrieveConsumer(baseURL, consumerId) {
+var retrieveConsumer = function retrieveConsumer(adminURL, consumerId) {
   return (0, _axios["default"])({
     method: 'get',
-    baseURL: baseURL,
+    baseURL: adminURL,
     url: "/consumers/".concat(consumerId)
   });
 };
 
 exports.retrieveConsumer = retrieveConsumer;
 
-var createConsumer = function createConsumer(baseURL, consumerId) {
+var createConsumer = function createConsumer(adminURL, consumerId) {
   return (0, _axios["default"])({
     method: 'post',
-    baseURL: baseURL,
+    baseURL: adminURL,
     url: '/consumers',
     data: {
       username: consumerId
@@ -43,10 +43,10 @@ var createConsumer = function createConsumer(baseURL, consumerId) {
 
 exports.createConsumer = createConsumer;
 
-var createOauthCredential = function createOauthCredential(baseURL, consumerId, name, redirect_uris) {
+var createOauthCredential = function createOauthCredential(adminURL, consumerId, name, redirect_uris) {
   return (0, _axios["default"])({
     method: 'post',
-    baseURL: baseURL,
+    baseURL: adminURL,
     url: "/consumers/".concat(consumerId, "/oauth2"),
     data: {
       name: name,
@@ -56,4 +56,41 @@ var createOauthCredential = function createOauthCredential(baseURL, consumerId, 
 };
 
 exports.createOauthCredential = createOauthCredential;
+
+var getAccessToken = function getAccessToken(baseURL, params, provisionKey) {
+  var scope = params.scope.join(' ');
+  var data = {
+    grant_type: params.grantType,
+    scope: scope,
+    authenticated_userid: params.authenticatedUserId,
+    provision_key: provisionKey
+  };
+
+  switch (params.grantType) {
+    case 'password':
+      {
+        ;
+        data.username = params.username, data.password = params.password;
+        break;
+      }
+
+    case 'client_credentials':
+      {
+        data.response_type = 'application/json';
+      }
+  }
+
+  return (0, _axios["default"])({
+    method: 'post',
+    baseURL: baseURL,
+    url: '/user/oauth2/token',
+    auth: {
+      username: params.clientId,
+      password: params.clientSecret
+    },
+    data: data
+  });
+};
+
+exports.getAccessToken = getAccessToken;
 //# sourceMappingURL=connector.js.map
