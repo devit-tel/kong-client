@@ -22,17 +22,15 @@ export default class KongClient {
 
   getKongInfomation = () => getKongInfomation(this.options.adminURL)
 
-  retrieveConsumer = consumerId =>
-    retrieveConsumer(this.options.adminURL, consumerId)
+  retrieveConsumer = consumer =>
+    retrieveConsumer(this.options.adminURL, consumer)
 
-  createConsumer = consumerId =>
-    createConsumer(this.options.adminURL, consumerId)
+  createConsumer = consumer => createConsumer(this.options.adminURL, consumer)
 
-  deleteConsumer = consumerId =>
-    deleteConsumer(this.options.adminURL, consumerId)
+  deleteConsumer = consumer => deleteConsumer(this.options.adminURL, consumer)
 
-  createOauthCredential = (consumerId, name, redirectUris) =>
-    createOauthCredential(this.options.adminURL, consumerId, name, redirectUris)
+  createOauthCredential = params =>
+    createOauthCredential(this.options.adminURL, params)
 
   getAccessToken = params =>
     getAccessToken(this.options.baseURL, params, this.options.provisionKey)

@@ -8,43 +8,38 @@ export const getKongInfomation = adminURL =>
     baseURL: adminURL
   })
 
-export const retrieveConsumer = (adminURL, consumerId) =>
+export const retrieveConsumer = (adminURL, consumer) =>
   HTTPClient({
     method: 'get',
     baseURL: adminURL,
-    url: `/consumers/${consumerId}`
+    url: `/consumers/${consumer.name}`
   })
 
-export const createConsumer = (adminURL, consumerId) =>
+export const createConsumer = (adminURL, consumer) =>
   HTTPClient({
     method: 'post',
     baseURL: adminURL,
     url: '/consumers',
     data: {
-      username: consumerId
+      username: consumer.name
     }
   })
 
-export const deleteConsumer = (adminURL, consumerId) =>
+export const deleteConsumer = (adminURL, consumer) =>
   HTTPClient({
     method: 'delete',
     baseURL: adminURL,
-    url: `/consumers/${consumerId}`
+    url: `/consumers/${consumer.name}`
   })
 
-export const createOauthCredential = (
-  adminURL,
-  consumerId,
-  name,
-  redirect_uris
-) =>
+export const createOauthCredential = (adminURL, params) =>
   HTTPClient({
     method: 'post',
     baseURL: adminURL,
-    url: `/consumers/${consumerId}/oauth2`,
+    url: `/consumers/${params.consumerName}/oauth2`,
     data: {
-      name,
-      redirect_uris
+      name: params.credentialName,
+      redirect_uris: params.redirectURIs
     }
   })
 

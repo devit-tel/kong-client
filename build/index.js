@@ -29,17 +29,17 @@ var KongClient = function KongClient(options) {
   (0, _defineProperty2["default"])(this, "getKongInfomation", function () {
     return (0, _connector.getKongInfomation)(_this.options.adminURL);
   });
-  (0, _defineProperty2["default"])(this, "retrieveConsumer", function (consumerId) {
-    return (0, _connector.retrieveConsumer)(_this.options.adminURL, consumerId);
+  (0, _defineProperty2["default"])(this, "retrieveConsumer", function (consumer) {
+    return (0, _connector.retrieveConsumer)(_this.options.adminURL, consumer);
   });
-  (0, _defineProperty2["default"])(this, "createConsumer", function (consumerId) {
-    return (0, _connector.createConsumer)(_this.options.adminURL, consumerId);
+  (0, _defineProperty2["default"])(this, "createConsumer", function (consumer) {
+    return (0, _connector.createConsumer)(_this.options.adminURL, consumer);
   });
-  (0, _defineProperty2["default"])(this, "deleteConsumer", function (consumerId) {
-    return (0, _connector.deleteConsumer)(_this.options.adminURL, consumerId);
+  (0, _defineProperty2["default"])(this, "deleteConsumer", function (consumer) {
+    return (0, _connector.deleteConsumer)(_this.options.adminURL, consumer);
   });
-  (0, _defineProperty2["default"])(this, "createOauthCredential", function (consumerId, name, redirectUris) {
-    return (0, _connector.createOauthCredential)(_this.options.adminURL, consumerId, name, redirectUris);
+  (0, _defineProperty2["default"])(this, "createOauthCredential", function (params) {
+    return (0, _connector.createOauthCredential)(_this.options.adminURL, params);
   });
   (0, _defineProperty2["default"])(this, "getAccessToken", function (params) {
     return (0, _connector.getAccessToken)(_this.options.baseURL, params, _this.options.provisionKey);

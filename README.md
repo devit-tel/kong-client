@@ -23,19 +23,25 @@ const kongClient = new KongClient({
 ### Retrieve Consumer
 
 ```javascript
-kongClient.retrieveConsumer('gun').then(res => console.log(res.data))
+kongClient
+  .retrieveConsumer({ name: 'test-kong-client' })
+  .then(res => console.log(res.data))
 ```
 
 ### Create Consumer
 
 ```javascript
-kongClient.createConsumer('test-kong-client').then(res => console.log(res))
+kongClient
+  .createConsumer({ name: 'test-kong-client' })
+  .then(res => console.log(res))
 ```
 
 ### Delete Consumer
 
 ```javascript
-kongClient.deleteConsumer('test-kong-client').then(res => console.log(res))
+kongClient
+  .deleteConsumer({ name: 'test-kong-client' })
+  .then(res => console.log(res))
 ```
 
 ## Credentials
@@ -44,9 +50,11 @@ kongClient.deleteConsumer('test-kong-client').then(res => console.log(res))
 
 ```javascript
 kongClient
-  .createOauthCredential('test-kong-client', 'test-oauth-credential', [
-    'http://localhost:3000/test'
-  ])
+createOauthCredential({
+  consumerName: 'test-kong-client',
+  credentialName: 'test-v2',
+  redirectURIs: ['http://localhost:3000/test']
+})
   .catch(err => console.log(err))
   .then(res => console.log(res))
 ```

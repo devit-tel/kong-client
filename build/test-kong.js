@@ -9,20 +9,22 @@ var kongClient = new _index["default"]({
   baseURL: 'https://kong-api.staging.sendit.asia/',
   provisionKey: 'fbXtBWhiHBCM4yzLVCPBgPcl2d14SQFC'
 }); // kongClient
-//   .retrieveConsumer('gun')
+//   .retrieveConsumer({ name: 'test-kong-client' })
 //   .then(res => console.log(res.data))
 // const test = async () => {
-//   const res = await kongClient.createConsumer('test-kong')
+//   const res = await kongClient.createConsumer({ name: 'test-kong-hello' })
 //   console.log(res)
 // }
 // test()
-// kongClient.deleteConsumer('gun').then(res => console.log(res))
 // kongClient
-//   .createOauthCredential(
-//     'test-kong-client',
-//     'test-oauth-credential',
-//     ['http://localhost:3000/test']
-//   )
+//   .deleteConsumer({ name: 'test-kong-hello' })
+//   .then(res => console.log(res))
+// kongClient
+//   .createOauthCredential({
+//     consumerName: 'test-kong-client',
+//     credentialName: 'test-v2',
+//     redirectURIs: ['http://localhost:3000/test']
+//   })
 //   .catch(err => console.log(err))
 //   .then(res => console.log(res))
 // kongClient
@@ -36,12 +38,11 @@ var kongClient = new _index["default"]({
 //     password: 'hello'
 //   })
 //   .then(res => console.log(res.data))
-
-kongClient.refreshAccessToken({
-  refreshToken: 'pGsp8brVpICl6QT56AWrVy95djL6QzED',
-  clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
-  clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
-}).then(function (res) {
-  return console.log(res);
-});
+// kongClient
+//   .refreshAccessToken({
+//     refreshToken: 'pGsp8brVpICl6QT56AWrVy95djL6QzED',
+//     clientId: 'ITLpahMKNzax87v2i6ioSwS5AikTbgxj',
+//     clientSecret: 'rl11Qb7nch7lgSb9XL8ZvRU5lEqSOxWL'
+//   })
+//   .then(res => console.log(res))
 //# sourceMappingURL=test-kong.js.map

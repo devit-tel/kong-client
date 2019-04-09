@@ -20,47 +20,47 @@ var getKongInfomation = function getKongInfomation(adminURL) {
 
 exports.getKongInfomation = getKongInfomation;
 
-var retrieveConsumer = function retrieveConsumer(adminURL, consumerId) {
+var retrieveConsumer = function retrieveConsumer(adminURL, consumer) {
   return (0, _axios["default"])({
     method: 'get',
     baseURL: adminURL,
-    url: "/consumers/".concat(consumerId)
+    url: "/consumers/".concat(consumer.name)
   });
 };
 
 exports.retrieveConsumer = retrieveConsumer;
 
-var createConsumer = function createConsumer(adminURL, consumerId) {
+var createConsumer = function createConsumer(adminURL, consumer) {
   return (0, _axios["default"])({
     method: 'post',
     baseURL: adminURL,
     url: '/consumers',
     data: {
-      username: consumerId
+      username: consumer.name
     }
   });
 };
 
 exports.createConsumer = createConsumer;
 
-var deleteConsumer = function deleteConsumer(adminURL, consumerId) {
+var deleteConsumer = function deleteConsumer(adminURL, consumer) {
   return (0, _axios["default"])({
     method: 'delete',
     baseURL: adminURL,
-    url: "/consumers/".concat(consumerId)
+    url: "/consumers/".concat(consumer.name)
   });
 };
 
 exports.deleteConsumer = deleteConsumer;
 
-var createOauthCredential = function createOauthCredential(adminURL, consumerId, name, redirect_uris) {
+var createOauthCredential = function createOauthCredential(adminURL, params) {
   return (0, _axios["default"])({
     method: 'post',
     baseURL: adminURL,
-    url: "/consumers/".concat(consumerId, "/oauth2"),
+    url: "/consumers/".concat(params.consumerName, "/oauth2"),
     data: {
-      name: name,
-      redirect_uris: redirect_uris
+      name: params.credentialName,
+      redirect_uris: params.redirectURIs
     }
   });
 };
