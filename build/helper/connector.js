@@ -93,7 +93,7 @@ var getAccessToken = function getAccessToken(baseURL, params, provisionKey) {
   return (0, _axios["default"])({
     method: 'post',
     baseURL: baseURL,
-    url: '/user/oauth2/token',
+    url: '/v2/external-user/oauth2/token',
     auth: {
       username: params.clientId,
       password: params.clientSecret
@@ -108,7 +108,7 @@ var refreshAccessToken = function refreshAccessToken(baseURL, params) {
   return (0, _axios["default"])({
     method: 'post',
     baseURL: baseURL,
-    url: '/user/oauth2/token',
+    url: '/v2/external-user/oauth2/token',
     auth: {
       username: params.clientId,
       password: params.clientSecret
