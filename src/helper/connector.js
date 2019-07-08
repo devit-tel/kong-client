@@ -63,7 +63,7 @@ export const getAccessToken = (baseURL, params, provisionKey) => {
   return HTTPClient({
     method: 'post',
     baseURL,
-    url: '/user/oauth2/token',
+    url: '/v2/external-user/oauth2/token',
     auth: {
       username: params.clientId,
       password: params.clientSecret
@@ -76,7 +76,7 @@ export const refreshAccessToken = (baseURL, params) =>
   HTTPClient({
     method: 'post',
     baseURL,
-    url: '/user/oauth2/token',
+    url: '/v2/external-user/oauth2/token',
     auth: {
       username: params.clientId,
       password: params.clientSecret
